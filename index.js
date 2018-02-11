@@ -40,7 +40,7 @@ if (typeof env.DYNAMO_ENDPOINT === 'string') {
     )
     process.exit(1)
   }
-  awsConfig.endpoint = env.DYNAMO_ENDPOINT
+  awsConfig.endpoint = env.DYNAMO_ENDPOINT.replace(/\"/g, '');
   awsConfig.sslEnabled = env.DYNAMO_ENDPOINT.indexOf('https://') === 0
 } else {
   awsConfig.endpoint = 'http://localhost:8000'
